@@ -27,6 +27,8 @@ gem 'devise'
 gem 'pry'
 # Third Party Authorization
 gem 'omniauth-github'
+# .ENV
+gem 'dotenv-rails'
 
 
 # Use Active Storage variant
