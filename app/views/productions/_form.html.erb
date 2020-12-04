@@ -1,5 +1,13 @@
 <%= form_for @production do |f| %>
+
     <%= f.label :title %>
     <%= f.text_field :title %>
+
+        <%# Select or Build Company %>
+        <%= f.fields_for :company, @production.build_company do |cf| %>
+            
+        <% end %>
+
     <%= f.submit %>
+
 <% end %>

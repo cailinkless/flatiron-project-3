@@ -6,7 +6,6 @@ class ProductionsController < ApplicationController
 
     def new
         @production = Production.new
-        @company = @production.company.find_or_initialize_by(params)
     end
 
     def create
@@ -32,7 +31,7 @@ class ProductionsController < ApplicationController
         params.require(:production, :title).permit(
             :opening, 
             :closing,
-            company_ids: []
+            company_id: []
             company_attributes: [
                 :name
             ]
