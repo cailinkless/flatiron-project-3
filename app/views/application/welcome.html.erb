@@ -1,1 +1,17 @@
-<h1>Sample</h1>
+<% if !user_signed_in? %>
+    <h1><%= link_to 'Signup', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to create or edit a new production program!<h1>
+<% else %>
+    <h1>Production Dashboard</h1>
+    <h2><%= link_to 'Create New Production', new_production_path %></h2>
+    <h2>My Drafts*</h2>
+    <h2>My Live Productions*</h2>
+    <h2>My Archive*</h2>
+    <h2>See All My Productions*</h2>
+
+    <h2>See All My Companies*</h2>
+    <h3>Explore:</h3>
+    <ul>
+        <li><%= link_to 'Browse All Shows', productions_path %></li>
+        <li><%= link_to 'Browse All Companies', companies_path %></li>
+    </ul>
+<% end %>

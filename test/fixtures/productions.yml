@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  opening: 2020-12-03 17:01:38
+  closing: 2020-12-03 17:01:38
+
+two:
+  title: MyString
+  opening: 2020-12-03 17:01:38
+  closing: 2020-12-03 17:01:38
