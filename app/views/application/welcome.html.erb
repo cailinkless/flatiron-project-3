@@ -1,11 +1,30 @@
 <% if !user_signed_in? %>
     <h1><%= link_to 'Signup', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to create or edit a production program!<h1>
 <% else %>
+    <%# binding.pry %>
     <h1>Production Dashboard</h1>
     <h2><%= link_to 'Create New Production', new_production_path %></h2>
     <h2>My Drafts*</h2>
+        <ol>
+            <% current_user.productions.unpublished.each do |draft| %>
+                <li><%= draft.title %></li>
+            <% end %>
+        </ol>
     <h2>My Live Productions*</h2>
+        <ol>
+            <% current_user.productions.upcoming.each do |show| %>
+                <li><%= show.title %></li>
+            <% end %>
+            <% current_user.productions.current.each do |show| %>
+                <li><%= show.title %></li>
+            <% end %>
+        </ol>
     <h2>My Archive*</h2>
+        <ol>
+            <% current_user.productions.past.each do |show| %>
+                <li><%= show.title %></li>
+            <% end %>
+        </ol>
     <h2>See All My Companies*</h2>
     <h3>Explore:</h3>
     <ul>

@@ -5,20 +5,22 @@ class ProductionsController < ApplicationController
     end
 
     def new
-        @production = Production.new
-        @companies = Company.all
+        @production = current_user.productions.build
     end
 
     def create
-        binding.pry
-        @production = Production.create(production_params)
+        # binding.pry
+        @production = current_user.productions.create(production_params)
         redirect_to production_path(@production)
     end
 
     def show
+        # binding.pry
+        @production = Production.find_by(params[:id])
     end
 
     def edit
+        # clean up
         @production = Production.find_by(production_params)
         @companies = Company.all
     end
