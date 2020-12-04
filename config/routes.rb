@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :productions do 
     resources :companies
   end
+  resources :companies 
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new', as: 'login'

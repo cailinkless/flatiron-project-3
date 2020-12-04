@@ -10,6 +10,8 @@ class ProductionsController < ApplicationController
     end
 
     def create
+        @production = Production.create(production_params)
+        redirect_to production
     end
 
     def show
@@ -27,7 +29,7 @@ class ProductionsController < ApplicationController
     private
 
     def production_params
-        params.require(:company, :title).permit(
+        params.require(:production, :title).permit(
             :opening, 
             :closing,
             company_ids: []
