@@ -3,9 +3,11 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
 
+    <%= f.collection_select :company_id, @companies, :name, include_blank: true %>
+
         <%# Select or Build Company %>
         <%= f.fields_for :company, @production.build_company do |cf| %>
-            
+            <%= cf.text_field :name %>
         <% end %>
 
     <%= f.submit %>

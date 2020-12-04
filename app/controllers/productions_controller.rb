@@ -6,17 +6,21 @@ class ProductionsController < ApplicationController
 
     def new
         @production = Production.new
+        @companies = Company.all
     end
 
     def create
+        binding.pry
         @production = Production.create(production_params)
-        redirect_to production
+        redirect_to production_path(@production)
     end
 
     def show
     end
 
     def edit
+        @production = Production.find_by(production_params)
+        @companies = Company.all
     end
 
     def update
@@ -28,10 +32,11 @@ class ProductionsController < ApplicationController
     private
 
     def production_params
-        params.require(:production, :title).permit(
+        params.require(:production).permit(
+            :title,
             :opening, 
             :closing,
-            company_id: []
+            company_id: [],
             company_attributes: [
                 :name
             ]
