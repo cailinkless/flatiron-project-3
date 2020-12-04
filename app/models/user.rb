@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :productions
   has_many :companies, through: :productions
+  # if you wanted people to be able to make a trial program first
+  # accepts_nested_attributes_for :productions
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid.first_or_create) do |user|

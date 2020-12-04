@@ -1,1 +1,7 @@
 <h1>All Companies</h1>
+<% @companies.each do |company| %>
+    <h4><%= company.name %></h4>
+    <% company.productions.each do |production| %>
+        <p><%= production.title %>: <%= production.opening %> - <%= production.closing %>
+    <% end %>
+<% end %>
