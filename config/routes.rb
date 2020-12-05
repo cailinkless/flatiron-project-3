@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   end
   resources :companies 
 
+  delete '/productions/:id', to: 'productions#destroy', as: 'delete_production'
+
+  get '/productions/:id/publish', to: 'productions#activate', as: 'publish_production'
+
   devise_scope :user do
     get 'login', to: 'devise/sessions#new', as: 'login'
     get 'signup', to: 'devise/registrations#new', as: 'signup'

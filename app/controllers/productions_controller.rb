@@ -35,8 +35,15 @@ class ProductionsController < ApplicationController
     end
 
     def destroy
-        Productions.find(params[:id]).destroy
+        Production.find(params[:id]).destroy
         redirect_to root_path
+    end
+
+    def publish
+        @production = Production.find(params[:id])
+        @production.published = !@production.published 
+        @production.save
+        redirect_to production_path(@production)
     end
 
     private

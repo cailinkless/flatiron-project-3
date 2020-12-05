@@ -6,5 +6,5 @@
 <% if !@production.published %>
 <p><%= link_to 'Edit', edit_production_path(@production) %><p>
 <p>Publish this Production</p>
-<%= button_to "Delete this Production", productions_path(@production), method: :delete %>
+<%= button_to "Delete this Production", delete_production_path(@production), method: :delete %>
 <% end %>
