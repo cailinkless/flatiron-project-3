@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   delete '/productions/:id', to: 'productions#destroy', as: 'delete_production'
 
-  get '/productions/:id/publish', to: 'productions#activate', as: 'publish_production'
+  get '/productions/:id/publish', to: 'productions#publish', as: 'publish_production'
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new', as: 'login'

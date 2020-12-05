@@ -44,6 +44,7 @@ class ProductionsController < ApplicationController
         @production.published = !@production.published 
         @production.save
         redirect_to production_path(@production)
+        # redirect based on when it was pushed?
     end
 
     private
