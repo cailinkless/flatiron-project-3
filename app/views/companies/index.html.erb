@@ -1,7 +1,11 @@
 <h1>All Companies</h1>
 <% @companies.each do |company| %>
     <h4><%= company.name %></h4>
-    <% company.productions.each do |production| %>
-        <p><%= production.title %>: <%= production.opening %> - <%= production.closing %>
+    <% if company.productions.published == [] %>
+        <p>There are currently no production listings for <%= company.name %>.</p>
+    <% else %>
+        <% company.productions.published.each do |production| %>
+            <p><%= production.title %>: <%= production.opening %> - <%= production.closing %>
+        <% end %>
     <% end %>
 <% end %>

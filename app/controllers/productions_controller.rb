@@ -1,7 +1,7 @@
 class ProductionsController < ApplicationController
 
     def index
-        @productions = Production.all
+        @productions = Production.all.published
     end
 
     def new
