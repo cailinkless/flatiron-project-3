@@ -4,28 +4,45 @@
     <%# binding.pry %>
     <h1>Production Dashboard</h1>
     <h2><%= link_to 'Create New Production', new_production_path %></h2>
-    <h2>My Drafts*</h2>
-        <ol>
-            <% current_user.productions.unpublished.each do |draft| %>
-                <li><%= draft.title %></li>
-            <% end %>
-        </ol>
-    <h2>My Live Productions*</h2>
-        <ol>
-            <% current_user.productions.upcoming.each do |show| %>
-                <li><%= show.title %></li>
-            <% end %>
-            <% current_user.productions.current.each do |show| %>
-                <li><%= show.title %></li>
-            <% end %>
-        </ol>
-    <h2>My Archive*</h2>
-        <ol>
-            <% current_user.productions.past.each do |show| %>
-                <li><%= show.title %></li>
-            <% end %>
-        </ol>
-    <h2>See All My Companies*</h2>
+    <h2>My Drafts</h2>
+        <% current_user.productions.unpublished.each do |production| %>
+                <h4><%= link_to production.title, production_path(production) %></h4>
+                    <ul>
+                        <li><%= link_to 'Edit', edit_production_path(production) %></li>
+                        <li>Publish</li>
+                        <%= button_to "Delete", productions_path(production), method: :delete %>
+                    </ul>
+        <% end %>
+<br>
+    <h2>My Live Productions</h2>
+        <% current_user.productions.upcoming.each do |production| %>
+            <h4><%= link_to production.title, production_path(production) %></h4>
+                <ul>
+                    <li><%= link_to 'Edit', edit_production_path(production) %></li>
+                    <li>Publish</li>
+                    <%= button_to "Delete", productions_path(production), method: :delete %>
+                </ul>                 
+        <% end %>
+        <% current_user.productions.current.each do |production| %>
+            <h4><%= link_to production.title, production_path(production) %></h4>
+                <ul>
+                    <li><%= link_to 'Edit', edit_production_path(production) %></li>
+                    <li>Publish</li>
+                    <%= button_to "Delete", productions_path(production), method: :delete %>
+                </ul>
+        <% end %>
+<br>
+    <h2>My Archive</h2>
+        <% current_user.productions.past.each do |production| %>
+            <h4><%= link_to production.title, production_path(production) %></h4>
+                <ul>
+                    <li><%= link_to 'Edit', edit_production_path(production) %></li>
+                    <li>Publish</li>
+                    <%= button_to "Delete", productions_path(production), method: :delete %>
+                </ul>
+        <% end %>
+<br>
+    <h2><%= link_to 'See All My Companies', companies_path %></h2>
     <h3>Explore:</h3>
     <ul>
         <li><%= link_to 'Browse All Shows', productions_path %></li>

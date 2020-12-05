@@ -1,3 +1,10 @@
+
 <h2><%= @production.title %></h2>
 <h4><%= @production.company.name %></h4>
 <p><%= @production.opening %> - <%= @production.closing %>
+
+<% if !@production.published %>
+<p><%= link_to 'Edit', edit_production_path(@production) %><p>
+<p>Publish this Production</p>
+<%= button_to "Delete this Production", productions_path(@production), method: :delete %>
+<% end %>

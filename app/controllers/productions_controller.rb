@@ -16,19 +16,27 @@ class ProductionsController < ApplicationController
 
     def show
         # binding.pry
-        @production = Production.find_by(params[:id])
+        @production = Production.find(params[:id])
     end
 
     def edit
-        # clean up
-        @production = Production.find_by(production_params)
-        @companies = Company.all
+        @production = Production.find(params[:id])
     end
 
     def update
+        @production = Production.find(params[:id])
+        binding.pry
+        if @production.update(production_params)
+            redirect_to production_path(@production)
+          else
+            render :edit
+        end
+
     end
 
     def destroy
+        Productions.find(params[:id]).destroy
+        redirect_to root_path
     end
 
     private

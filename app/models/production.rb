@@ -11,4 +11,13 @@ class Production < ApplicationRecord
     scope :started, -> { published.where("opening < ?", Time.now) }
     scope :current, -> { started.where("closing > ?", Time.now) }
 
+    def company_attributes=(company_attributes)
+        company_attributes.values.each do |company_attribute|
+            @company = Company.find_or_create_by(company_attribute)
+            unless @company.name == ""
+              self.company = @company 
+            end
+        end
+    end
+
 end
