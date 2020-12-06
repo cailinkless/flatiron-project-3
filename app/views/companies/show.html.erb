@@ -1,0 +1,9 @@
+<h2><%= @company.name %></h2>
+<% @company.productions.published.each do |production| %>
+    <%= link_to production.title, company_production_path(@company[:id], production[:id]) %>
+    <br><br>
+<% end %>
+<br>
+<% if current_user %>
+<%= link_to "Add new production for #{@company.name}", new_company_production_path(@company) %>
+<% end %>

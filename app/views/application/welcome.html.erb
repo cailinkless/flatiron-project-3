@@ -10,7 +10,7 @@
                     <ul>
                         <li><%= link_to 'Edit', edit_production_path(production) %></li>
                         <li><%= link_to 'Publish this Production', publish_production_path(production) %></li>
-                        <li><%= button_to "Delete", productions_path(production), method: :delete %></li>
+                        <li><%= button_to "Delete this Production", delete_production_path(production), method: :delete %></li>
                     </ul>
         <% end %>
 <br>
@@ -20,7 +20,7 @@
                 <ul>
                     <li><%= link_to 'Edit', edit_production_path(production) %></li>
                     <li><%= link_to 'Unpublish this Production', publish_production_path(production) %></li>
-                    <li><%= button_to "Delete", productions_path(production), method: :delete %></li>
+                    <li><%= button_to "Delete this Production", delete_production_path(production), method: :delete %></li>
                 </ul>                 
         <% end %>
         <% current_user.productions.current.each do |production| %>
@@ -28,7 +28,7 @@
                 <ul>
                     <li><%= link_to 'Edit', edit_production_path(production) %></li>
                     <li><%= link_to 'Unpublish this Production', publish_production_path(production) %></li>
-                    <li><%= button_to "Delete", productions_path(production), method: :delete %></li>
+                    <li><%= button_to "Delete this Production", delete_production_path(production), method: :delete %></li>
                 </ul>
         <% end %>
 <br>
@@ -38,7 +38,7 @@
                 <ul>
                     <li><%= link_to 'Edit', edit_production_path(production) %></li>
                     <li><%= link_to 'Unpublish this Production', publish_production_path(production) %></li>
-                    <li><%= button_to "Delete", productions_path(production), method: :delete %></li>
+                    <li><%= button_to "Delete this Production", delete_production_path(production), method: :delete %></li>
                 </ul>
         <% end %>
 <br>

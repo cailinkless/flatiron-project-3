@@ -5,17 +5,15 @@ class ProductionsController < ApplicationController
     end
 
     def new
-        @production = current_user.productions.build
+        @production = current_user.productions.build(company_id: params[:company_id])
     end
 
     def create
-        # binding.pry
         @production = current_user.productions.create(production_params)
         redirect_to production_path(@production)
     end
 
     def show
-        # binding.pry
         @production = Production.find(params[:id])
     end
 
@@ -25,16 +23,15 @@ class ProductionsController < ApplicationController
 
     def update
         @production = Production.find(params[:id])
-        binding.pry
         if @production.update(production_params)
             redirect_to production_path(@production)
           else
             render :edit
         end
-
     end
 
     def destroy
+        binding.pry
         Production.find(params[:id]).destroy
         redirect_to root_path
     end
@@ -44,7 +41,7 @@ class ProductionsController < ApplicationController
         @production.published = !@production.published 
         @production.save
         redirect_to production_path(@production)
-        # redirect based on when it was pushed?
+        # redirect based on from whence it was pushed?
     end
 
     private
@@ -54,7 +51,7 @@ class ProductionsController < ApplicationController
             :title,
             :opening, 
             :closing,
-            company_id: [],
+            :company_id,
             company_attributes: [
                 :name
             ]
