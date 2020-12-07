@@ -26,11 +26,7 @@ class ProductionsController < ApplicationController
     end
 
     def edit
-        if !current_user
-            redirect_to root_path
-        else
-            @production = current_user.productions.build(company_id: params[:company_id])
-        end
+        @production = Production.find(params[:id])
     end
 
     def update

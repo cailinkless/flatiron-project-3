@@ -17,7 +17,6 @@ class CompaniesController < ApplicationController
         @company = Company.find(params[:id])
     end
 
-    #necessary? maybe make so you can only edit 
     def edit
         @company = Company.find(params[:id])
     end
@@ -34,6 +33,12 @@ class CompaniesController < ApplicationController
     def destroy
         Company.find(params[:id]).destroy
         redirect_to root_path
+    end
+
+    def company_params
+        params.require(:company).permit(
+            :name
+        )
     end
     
 end
