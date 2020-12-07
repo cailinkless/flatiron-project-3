@@ -1,9 +1,19 @@
 <h2><%= @company.name %></h2>
 <% @company.productions.published.each do |production| %>
     <%= link_to production.title, company_production_path(@company[:id], production[:id]) %>
+    <br>
+    <p><%= production.readable_opening %> - <%= production.readable_closing %></p>
     <br><br>
 <% end %>
 <br>
 <% if current_user %>
 <%= link_to "Add new production for #{@company.name}", new_company_production_path(@company) %>
+<% else %>
+<p><%= link_to 'Signup', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to add a production!</p>
 <% end %>
+
+    <h3>Explore:</h3>
+    <ul>
+        <li><%= link_to 'Browse All Shows', productions_path %></li>
+        <li><%= link_to 'Browse All Companies', companies_path %></li>
+    </ul>

@@ -1,2 +1,8 @@
+<% if !user_signed_in? %>
+    <h3><%= link_to 'Signup', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to add a new company to our database!</h3>
+    <br>
+    <p>or</p>
+<% else %>
 <h4>List a new company:</h4>
 <%= render 'form' %>
+<% end %>

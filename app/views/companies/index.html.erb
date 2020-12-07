@@ -7,3 +7,16 @@
         <p>See listings for <%= company.name %> above.</p>
     <% end %>
 <% end %>
+
+<% if !user_signed_in? %>
+    <h3><%= link_to 'Signup', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to add a new company to our database!</h3>
+    <br>
+    <p>or</p>
+<% else %>
+    <%= link_to 'Add a new company', new_company_path %>
+<% end %>
+
+    <h3>Explore By Show:</h3>
+    <ul>
+        <li><%= link_to 'Browse All Shows', productions_path %></li>\
+    </ul>

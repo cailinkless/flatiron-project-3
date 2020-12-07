@@ -5,12 +5,20 @@ class ProductionsController < ApplicationController
     end
 
     def new
-        @production = current_user.productions.build(company_id: params[:company_id])
+        if !current_user
+            redirect_to root_path
+        else
+            @production = current_user.productions.build(company_id: params[:company_id])
+        end
     end
 
     def create
         @production = current_user.productions.create(production_params)
-        redirect_to production_path(@production)
+        if @production.save
+            redirect_to production_path(@production)   
+        else
+           render :new
+        end
     end
 
     def show
@@ -18,7 +26,11 @@ class ProductionsController < ApplicationController
     end
 
     def edit
-        @production = Production.find(params[:id])
+        if !current_user
+            redirect_to root_path
+        else
+            @production = current_user.productions.build(company_id: params[:company_id])
+        end
     end
 
     def update
@@ -31,7 +43,7 @@ class ProductionsController < ApplicationController
     end
 
     def destroy
-        binding.pry
+        # binding.pry
         Production.find(params[:id]).destroy
         redirect_to root_path
     end

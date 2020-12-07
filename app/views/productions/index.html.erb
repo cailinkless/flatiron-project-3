@@ -1,6 +1,11 @@
 <h1>All Productions</h1>
 <% @productions.each do |production| %>
-    <h4><%= production.title %></h4>
-    <p><%= production.company.name %></p>
-    <p><%= production.opening %> - <%= production.closing %></p>
+    <h4><%= link_to production.title, production_path(production) %></h4> 
+    <p><%= link_to production.company.name, company_path(production.company) %></p> 
+    <p><%= production.readable_opening %> - <%= production.readable_closing %></p>
 <% end %>
+
+    <h3>Explore By Company:</h3>
+    <ul>
+        <li><%= link_to 'Browse All Companies', companies_path %></li>
+    </ul>
