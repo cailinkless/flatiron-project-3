@@ -1,37 +1,27 @@
-<% if @production.published == true %>
+<%# Program Listing Section %>
 
-    <h2><%= @production.title %></h2>
-    <h4><%= @production.company.name %></h4>
-    <p><%= @production.readable_opening %> - <%= @production.readable_closing %>
+<% if (current_user && current_user.id == @production.user.id) || @production.published == true %>
 
-    <% if current_user && current_user.id == @production.user.id %>
-            <p><%= link_to 'Edit', edit_production_path(@production) %><p>
-            <p><%= link_to 'Unpublish this Production', publish_production_path(@production) %></p> 
-            <%= button_to "Delete this Production", delete_production_path(@production), method: :delete %>
-        <% end %>
+    <%= render 'listing' %>
 
 <% else %>
 
-    <% if current_user && current_user.id == @production.user.id %>
-
-        <h2><%= @production.title %></h2>
-        <h4><%= @production.company.name %></h4>
-        <p><%= @production.readable_opening %> - <%= @production.readable_closing %>
-
-        <p><%= link_to 'Edit', edit_production_path(@production) %><p>
-        <p><%= link_to 'Publish this Production', publish_production_path(@production) %></p> 
-        <%= button_to "Delete this Production", delete_production_path(@production), method: :delete %>
-
-    <% else %>
-
-        <h3><%= link_to 'Signup', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to create or edit a production program!</h3>
-        <p>or</p>
-            <h3>Explore some shows:</h3>
-            <ul>
-                <li><%= link_to 'Browse All Shows', productions_path %></li>
-                <li><%= link_to 'Browse All Companies', companies_path %></li>
-            </ul>
-
-    <% end %>
+    <%= render 'unknown' %>
 
 <% end %>
+
+<%# Edit Menu Section %>
+
+<% if current_user && current_user.id == @production.user.id && @production.published == true %>
+
+    <%= render 'publishedmenu' %>
+
+<% elsif current_user && current_user.id == @production.user.id && @production.published == false %>
+
+    <%= render 'unpublishedmenu' %>
+
+<% end %>
+
+<%# Explore Section %>
+
+<%= render 'explore' %>
