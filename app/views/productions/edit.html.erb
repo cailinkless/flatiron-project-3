@@ -1,9 +1,17 @@
-<% if current_user && current_user.id == @production.user.id %>
 <h1>Edit Production</h1>
-<%= render 'form' %>
+
+<% if current_user && current_user.id == @production.user.id %>
+
+    <%= render 'form' %>
+
 <p><%= link_to "Never mind, it's perfect!", production_path(@production) %></p>
+
 <% else %>
-<h3>You must <%= link_to 'Login', new_user_session_path %> to edit a production program!</h3>
+
+    <%= render 'unknown' %>
+
 <% end %>
+
+<%= render 'explore' %>
     
 
