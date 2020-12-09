@@ -33,13 +33,12 @@ class ProductionsController < ApplicationController
         @production = Production.find(params[:id])
         if @production.update(production_params)
             redirect_to production_path(@production)
-          else
+        else
             render :edit
         end
     end
 
     def destroy
-        # binding.pry
         Production.find(params[:id]).destroy
         redirect_to root_path
     end
